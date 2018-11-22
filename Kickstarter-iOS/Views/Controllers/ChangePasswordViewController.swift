@@ -74,23 +74,17 @@ final class ChangePasswordViewController: UIViewController {
       |> UILabel.lens.text %~ { _ in Strings.Confirm_password() }
 
     _ = confirmNewPasswordTextField
-      |> formFieldStyle
-      |> UITextField.lens.secureTextEntry .~ true
+      |> newPasswordFieldAutoFillStyle
       |> UITextField.lens.textAlignment .~ .right
       |> UITextField.lens.returnKeyType .~ .done
-      |> UITextField.lens.placeholder %~ { _ in Strings.login_placeholder_password() }
 
     _ = currentPasswordLabel
       |> settingsTitleLabelStyle
       |> UILabel.lens.text %~ { _ in Strings.Current_password() }
 
     _ = currentPasswordTextField
-      |> formFieldStyle
-      |> UITextField.lens.secureTextEntry .~ true
+      |> passwordFieldAutoFillStyle
       |> UITextField.lens.textAlignment .~ .right
-      |> UITextField.lens.placeholder %~ { _ in
-        Strings.login_placeholder_password()
-    }
 
     _ = validationErrorMessageLabel
       |> settingsDescriptionLabelStyle
@@ -100,12 +94,8 @@ final class ChangePasswordViewController: UIViewController {
       |> UILabel.lens.text %~ { _ in Strings.New_password() }
 
     _ = newPasswordTextField
-      |> formFieldStyle
-      |> UITextField.lens.secureTextEntry .~ true
+      |> newPasswordFieldAutoFillStyle
       |> UITextField.lens.textAlignment .~ .right
-      |> UITextField.lens.placeholder %~ { _ in
-        Strings.login_placeholder_password()
-    }
   }
 
   override func bindViewModel() {
