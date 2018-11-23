@@ -6,9 +6,7 @@ import Prelude
 final class ChangePasswordViewControllerTests: TestCase {
   override func setUp() {
     super.setUp()
-
     AppEnvironment.pushEnvironment(mainBundle: Bundle.framework)
-
     UIView.setAnimationsEnabled(false)
   }
 
