@@ -100,10 +100,11 @@ internal final class ChangeEmailViewController: UIViewController {
 
     _ = self.newEmailTextField
       |> formFieldStyle
+      |> settingsFormFieldStyle
       |> \.returnKeyType .~ .next
       |> \.textAlignment .~ .right
-      |> \.placeholder %~ { _ in
-        Strings.login_placeholder_email()
+      |> \.attributedPlaceholder %~ { _ in
+        settingsAttributedPlaceholder(Strings.login_placeholder_email())
     }
 
     _ = self.passwordLabel
@@ -112,8 +113,12 @@ internal final class ChangeEmailViewController: UIViewController {
 
     _ = self.passwordTextField
       |> passwordFieldStyle
+      |> settingsFormFieldStyle
       |> \.textAlignment .~ .right
       |> \.returnKeyType .~ .go
+      |> \.attributedPlaceholder %~ { _ in
+        settingsAttributedPlaceholder(Strings.login_placeholder_password())
+    }
 
     _ = self.resendVerificationEmailButton
       |> UIButton.lens.titleLabel.font .~ .ksr_body()
